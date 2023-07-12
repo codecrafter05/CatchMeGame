@@ -64,8 +64,14 @@ let level = 1;
 let rounds = 0;
 
 
-//start scor
+//start score
 let score = 0
+
+// score counte 
+const scoreElement = document.getElementById('score');
+document.getElementById("score").innerHTML = "Score: 0";
+
+
 
 // initial time playing
 let initialPlay = true;
@@ -162,12 +168,18 @@ function catchMonkey(event) {
     event.target.remove();
     const box = document.querySelector(`#m${currentImageIndex}`);
     box.classList.add('box');
-    // monkeyIntervalId = setInterval(showMonkey, 4000);
-    // Remove the class centering to the div
+
     box.classList.remove('centering');
     hitMonkey = true;
     score++
     console.log(`Score: ${score}`)
+
+
+
+    //score show 
+    scoreElement.textContent = score;
+
+    
 }
 
 // function gameOver(){
@@ -241,7 +253,10 @@ function catchMonkey(event) {
 
 
 // show the tow monkys at the same time after 4 times he catch the monky 
+// function showMonkeyLevel(){
 
+//     if (score >=9, monkeyShowTime(500) );
+// }
 
 // enable and disable start button
 function enableStartButton(enable) {
@@ -257,7 +272,7 @@ function enableStartButton(enable) {
 function startGame() {
     console.log("StartGame")
     gameOver = false;
-    monkeyIntervalId = setInterval(showMonkey, 2000);
+    monkeyIntervalId = setInterval(showMonkey, 1000);
     // Disable 
     enableStartButton(false);
     // clearInterval(monkeyIntervalId);
@@ -336,3 +351,12 @@ var x = setInterval(function () {
         document.getElementById("demo").innerHTML = "EXPIRED";
     }
 }, 1000);
+
+
+
+
+
+
+
+
+

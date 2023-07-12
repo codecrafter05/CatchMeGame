@@ -775,3 +775,57 @@ button {
   }
 
   
+#score{
+
+  color: #f19af3;
+  margin: auto;
+  font-size: 40px;
+ 
+
+}
+
+/* 
+
+* {
+  box-sizing: border-box;
+}
+
+#v2 {
+  float: right;
+  width: 25%;
+  padding: 20px;
+}
+
+.checkbox-wrapper-5 {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+#logobody {
+  padding: 60px;
+  text-align: center;
+  background: #3b8cf5;
+  color: white;
+}
+
+#BB {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 992px) {
+  #logobody {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .checkbox-wrapper-5 {
+    width: 100%;
+  }
+}
+   */
