@@ -64,10 +64,31 @@ let level = 1;
 let rounds = 0;
 
 
+//start scor
+let score = 0
 
+// initial time playing
+let initialPlay = true;
+
+let hitMonkey = false;
+
+let gameOver = false;
 // add one to rounds
 function showMonkey(e) {
-    // TODO Clear all fields
+    console.log("Show Monkehy")
+    if(!initialPlay && !hitMonkey){
+        console.log('Game Over!!')
+        gameOver = true;
+        clearInterval(monkeyIntervalId);
+        score = 0
+        enableStartButton(true);
+        console.log('Start Button enabled!!')
+    }
+    if(initialPlay){
+        initialPlay = false;
+    }
+    if (!gameOver) {
+          // TODO Clear all fields
     // Delete all contents of dad
     while (dad.firstChild) {
         dad.removeChild(dad.firstChild)
@@ -82,6 +103,8 @@ function showMonkey(e) {
 
     rounds++;
 
+
+    
     // Start the status change process by setting the in progress variable//////
     // TODO Move this to somewhere else
     // e.target.setAttribute('disabled', true);
@@ -118,9 +141,14 @@ function showMonkey(e) {
     image.addEventListener('click', catchMonkey);
 
     monkeyInBox++;
+    hitMonkey = false;
+    console.log(`showMonkey monkeyInBox ${monkeyInBox}`);
 
     // Add 1 the monkey is in box variable
-    setTimeout(checkForMonkey, monkeyShowTime);
+    // setTimeout(checkForMonkey, monkeyShowTime);
+    // checkForMonkey();
+    }
+  
 }
 
 
@@ -130,12 +158,16 @@ function catchMonkey(event) {
     // Add 1 to monkey catch count
     monkeyCaughtCount++;
     monkeyInBox--;
+    console.log(`catchMonkey monkeyInBox ${monkeyInBox}`);
     event.target.remove();
     const box = document.querySelector(`#m${currentImageIndex}`);
     box.classList.add('box');
-
+    // monkeyIntervalId = setInterval(showMonkey, 4000);
     // Remove the class centering to the div
     box.classList.remove('centering');
+    hitMonkey = true;
+    score++
+    console.log(`Score: ${score}`)
 }
 
 // function gameOver(){
@@ -148,10 +180,21 @@ function catchMonkey(event) {
 
 
 // This function looks to see if there is a monkey in the box. IF there is one, the game ends
-function checkForMonkey() {
-
-    // Is monkey in the box variable is > 0******
-    // he loss if the timer finsh befor he catchit 
+// function checkForMonkey() {
+//     // Is monkey in the box variable is > 0******
+//     // he loss if the timer finsh befor he catchit 
+//     if(monkeyInBox > 0){
+//         setTimeout(function() {
+//             console.log("u lost")
+//             gameOver = true;
+//             setup();
+//         },2000)
+//         console.log("above")
+//         // clearInterval(monkeyIntervalId);
+        
+        
+//     }
+   
 
 
     // Game ends (stub - fill in with what happens if the game end)
@@ -180,7 +223,7 @@ function checkForMonkey() {
 
 
 
-}
+// }/
 
 
 // catch monkey function
@@ -212,10 +255,24 @@ function enableStartButton(enable) {
 }
 
 function startGame() {
+    console.log("StartGame")
+    gameOver = false;
     monkeyIntervalId = setInterval(showMonkey, 2000);
     // Disable 
     enableStartButton(false);
     // clearInterval(monkeyIntervalId);
+    monkeyCaughtCount = 0;
+    monkeyShowTime = 1000;
+    monkeyInBox = 0;
+    level = 1;
+    rounds = 0;
+    monkeyIntervalId;
+    // initialPlay = true;
+    // hitMonkey = false;
+    score = 0
+    // gameOver = false;
+    
+
 }
 
 function setup() {
@@ -249,7 +306,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-
+// ! count Down cood  !!!
 
 // Set the date we're counting down to
 var countDownDate = new Date("jul 14, 2023 11:37:25").getTime();
