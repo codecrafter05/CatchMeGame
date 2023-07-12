@@ -17,9 +17,6 @@ visitorCount++;
 const visitorCountElement = document.getElementById('visitor-count');
 visitorCountElement.textContent = visitorCount;
 
-
-
-
 //function to show monkey//
 const container = document.querySelector('.mom');
 const boxes = document.querySelectorAll('.box');
@@ -34,18 +31,7 @@ const images = [
 //location image 
 let currentImageIndex = 15;
 
-// stop the start game button///////
-// console.log(startGame)
-
-
-
-
-// Set the start Game ////
-//  startGame = "start";
-
-
 // Create Global Variables
-
 let monkeyIntervalId;
 
 // Number of times the monkey has been caught
@@ -71,8 +57,6 @@ let score = 0
 const scoreElement = document.getElementById('score');
 document.getElementById("score").innerHTML = "Score: 0";
 
-
-
 // initial time playing
 let initialPlay = true;
 
@@ -89,6 +73,14 @@ function showMonkey(e) {
         score = 0
         enableStartButton(true);
         console.log('Start Button enabled!!')
+        //soude wen time out 
+        setTimeout(function() {
+            console.log("You lost!");
+            gameOver = true;
+            document.getElementById("audio").play();
+            setup();
+         } );
+
     }
     if(initialPlay){
         initialPlay = false;
@@ -111,12 +103,7 @@ function showMonkey(e) {
 
 
     
-    // Start the status change process by setting the in progress variable//////
-    // TODO Move this to somewhere else
-    // e.target.setAttribute('disabled', true);
-    // Loop for the number of levels
-    // Create random number from 0-36 (currentImageIndex)
-    // for (let i = 0; i < level; i++) {
+    
     currentImageIndex = Math.floor(Math.random() * 36);
 
     // Create a new image element
@@ -150,9 +137,6 @@ function showMonkey(e) {
     hitMonkey = false;
     console.log(`showMonkey monkeyInBox ${monkeyInBox}`);
 
-    // Add 1 the monkey is in box variable
-    // setTimeout(checkForMonkey, monkeyShowTime);
-    // checkForMonkey();
     }
   
 }
@@ -173,6 +157,7 @@ function catchMonkey(event) {
     hitMonkey = true;
     score++
     console.log(`Score: ${score}`)
+    
 
 
 
@@ -182,82 +167,7 @@ function catchMonkey(event) {
     
 }
 
-// function gameOver(){
-
-//  // Release the progress variable by setting it false////////
-//  startGameChangeInProgress = false;
-// }
-
-
-
-
-// This function looks to see if there is a monkey in the box. IF there is one, the game ends
-// function checkForMonkey() {
-//     // Is monkey in the box variable is > 0******
-//     // he loss if the timer finsh befor he catchit 
-//     if(monkeyInBox > 0){
-//         setTimeout(function() {
-//             console.log("u lost")
-//             gameOver = true;
-//             setup();
-//         },2000)
-//         console.log("above")
-//         // clearInterval(monkeyIntervalId);
-        
-        
-//     }
-   
-
-
-    // Game ends (stub - fill in with what happens if the game end)
-
-    // else
-
-    // Set the level
-
-    // level = floor (rounds + 1 / 4) + 1
-    // one level for every 4 rounds
-
-    // if the level > 10
-
-    // Set win state of the game
-
-    // Return
-
-
-    // if monkey time > 1 && monkey count >= 8
-
-    // reset the monkey count
-
-    // Remove 1/2 second from the monkey show time
-
-    // call the function to show another monkey
-
-
-
-// }/
-
-
-// catch monkey function
-
-// Add 1 to monkey catch count
-
-// remove 1 from monkey in the box 
-
-// remove the image from the click element
-
-// Add the class 'box' to the div
-
-// Remove the class centering to the div
-
-
-
-// show the tow monkys at the same time after 4 times he catch the monky 
-// function showMonkeyLevel(){
-
-//     if (score >=9, monkeyShowTime(500) );
-// }
-
+ 
 // enable and disable start button
 function enableStartButton(enable) {
     if (enable) {
@@ -287,6 +197,7 @@ function startGame() {
     score = 0
     // gameOver = false;
     
+    
 
 }
 
@@ -307,24 +218,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ! count Down cood  !!!
 
 // Set the date we're counting down to
-var countDownDate = new Date("jul 14, 2023 11:37:25").getTime();
+var countDownDate = new Date("jul 13, 2023 11:37:25").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function () {
