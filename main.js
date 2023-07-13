@@ -182,21 +182,21 @@ function enableStartButton(enable) {
 function startGame() {
     console.log("StartGame")
     gameOver = false;
+    clearInterval(monkeyIntervalId);
     monkeyIntervalId = setInterval(showMonkey, 1000);
     // Disable 
     enableStartButton(false);
-    // clearInterval(monkeyIntervalId);
+    
     monkeyCaughtCount = 0;
     monkeyShowTime = 1000;
     monkeyInBox = 0;
     level = 1;
     rounds = 0;
-    monkeyIntervalId;
     // initialPlay = true;
     // hitMonkey = false;
     score = 0
     // gameOver = false;
-    
+    document.getElementById("score").innerHTML = "Score: 0";
     
 
 }
